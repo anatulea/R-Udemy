@@ -1,0 +1,10 @@
+library(readxl)
+excel_sheets('./Desktop/R-udemy/Excel/Sample-Sales-Data.xlsx')
+df <- read_excel('./Desktop/R-udemy/Excel/Sample-Sales-Data.xlsx',sheet='Sheet1')
+print(head(df))
+
+library(xlsx)
+df <- data.frame(matrix(1:10))
+write.xlsx(df, "output.xlsx")
+testex <- read_excel('output.xlsx')
+print(testex)
