@@ -1,7 +1,7 @@
 # Histograms with ggplot2
 
  
-`pl<- ggplot(df, aes(x=rating))`
+## `pl<- ggplot(df, aes(x=rating))`
 
 
 `pl + geom_histogram()`
