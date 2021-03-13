@@ -40,7 +40,3 @@ print(avg.mpg)
 # Use pipe operators to get the mean hp value for cars with 6 cylinders.
 result <- df %>% filter(cyl == 6) %>% summarise(mean(hp))
 print(result)
-
-
-
-
