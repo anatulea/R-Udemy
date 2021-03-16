@@ -35,3 +35,11 @@ print(p5)
 # Gradient Scales
 p6 <- pl + geom_point(aes(colour = hp),size=4) + scale_colour_gradient(high='red',low = "blue")
 print(p6)
+
+
+
+
+
+
+
+
