@@ -6,15 +6,15 @@
 # Get our Data
 # Read CSV, note the delimiter (sep)
 df<- read.csv('../CSV/student-mat.csv', sep =';')
-# print(df)
+print(df)
 
 # Clean the Data
 # Check for NA values
 # Let's see if we have any NA values:
-#print(any(is.na(df))) #false
+print(any(is.na(df))) #false
 
 # Categorical Features
-# print(str(df))
+print(str(df))
 
 # Exploratory Data Analysis
 library(ggplot2)
@@ -29,31 +29,31 @@ num.cols <-sapply(df, is.numeric) # returns onlu numeric columns
 
 # Filter to numeric columns for correlation
 cor.data <- cor(df[,num.cols]) #used cor() function
-#print(cor.data)
+print(cor.data)
 
 # Visualize all this data
 
 # install.packages('corrgram')
-#install.packages('corrplot')
+# install.packages('corrplot')
 
 library(corrplot)
 library(corrgram)
 
 # USE CORRPLOT
 pl1 <- corrplot(cor.data, method='color')
-# print(pl1)
+print(pl1)
 
 #USE CORREGRAM
 pl2 <- corrgram(df)
-# print(pl2)
+print(pl2)
 
 pl3<-corrgram(df, order=TRUE, lower.panel = panel.shade, upper.panel = panel.pie, text.panel = panel.txt)
-# print(pl3) #blue positive correlation, red-negative
+print(pl3) #blue positive correlation, red-negative
+
 
 # USE GGPLOT2
-
 pl4 <-ggplot(df, aes(G3)) + geom_histogram(bins=20, alpha=0.5, fill='blue')+theme_minimal()
-# print(pl4)
+print(pl4)
 
 
 #         Building a Model
@@ -82,7 +82,7 @@ test <-subset(df, sample == FALSE)
 model <- lm(G3 ~., data = train) # lm() funct . is for all data
 
 # interpret the model
-#print(summary(model))
+print(summary(model))
 
 
 # Visualize our Model
@@ -91,24 +91,25 @@ res <- residuals(model)
 
 # Convert to DataFrame for gglpot
 res <- as.data.frame(res)
-# print(head(res))
+print(head(res))
 
 
 # Histogram of residuals
 pl6 <- ggplot(res,aes(res)) +  geom_histogram(bins=20,fill='blue',alpha=0.5)
-# print(pl6)
+print(pl6)
 
-# print(plot(model)) # hit Return to see the rest of the plots
+print(plot(model)) # hit Return to see the rest of the plots
 
 
               # Predictions
 # Let's test our model by predicting on our testing set:
 G3.predictions <-predict(model, test)
+
 # Now we can get the root mean squared error, a standardized measure of how off we were with our predicted values:
 results <- cbind(G3.predictions, test$G3)
 colnames(results) <- c('pred', 'real')
 results <- as.data.frame(results)
-# print(head(results))
+print(head(results))
 
 # let's take care of negative predictions
 to_zero <- function(x){
