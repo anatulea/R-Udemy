@@ -1,4 +1,9 @@
 # Logistic Regression Lecture
+# Logistic Regression is a type of classification model. In classification models, we attempt to predict the outcome of categorical dependent variables, using one or more independent variables. The independent variables can be either categorical or numerical.
+# 
+# Logistic regression is based on the logistic function, which always takes values between 0 and 1. Replacing the dependent variable of the logistic function with a linear combination of dependent variables we intend to use for regression, we arrive at the formula for logistic regression.
+
+
 df.train <- read.csv('../CSV/titanic_train.csv')
 print(head(df.train))
 

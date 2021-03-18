@@ -37,7 +37,7 @@ print(freq.type)
 
 #Combine these two smallest groups into a single group called "Unemployed". There are lots of ways to do this, so feel free to get creative. Hint: It may be helpful to convert these objects into character data types (as.character() and then use sapply with a custom function)
 unemployed <- function(type){
-  newStatus <-type
+  newStatus <-type # as.character(job)
   for(i in 1:length(type)){
     if(type[i]== "Never-worked" | type[i] == "Without-pay"){
       newStatus[i]<- "Unemployed"
