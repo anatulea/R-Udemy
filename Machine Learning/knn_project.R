@@ -12,13 +12,13 @@ print(str(iris))
 # Lets go ahead and do this even though its not necessary for this data!
 #   
 # Use scale() to standardize the feature columns of the iris dataset. Set this standardized version of the data as a new variable.
-standardized.iris <- scale(iris[1:4])
+standardized.iris <- scale(iris[1:4]) # pass in the col 1 to 4
 
 # Check that the scaling worked by checking the variance of one of the new columns.
 print(var(standardized.iris[,1])) # 1
 
 # Join the standardized data with the response/target/label column (the column with the species names.
-standard.data <- cbind(standardized.iris, iris[5])
+standard.data <- cbind(standardized.iris, iris[5]) # join as the 5th column
 print(head(standard.data))
 
 # Train and Test Splits
@@ -26,7 +26,7 @@ print(head(standard.data))
 library(caTools)
 set.seed(101)
 
-sample <- sample.split(standard.data$Species, SplitRatio = 0.70)
+sample <- sample.split(standard.data$Species, SplitRatio = 0.70) # use the column we try to predict
 train <-subset(standard.data, sample == TRUE)
 test <-subset(standard.data, sample == FALSE)
 
@@ -35,7 +35,7 @@ test <-subset(standard.data, sample == FALSE)
 library(class)
 
 # Use the knn function to predict Species of the test set. Use k=1
-# knn(train, test, cl, k = 1, l = 0, prob = FALSE, use.all = TRUE)
+# knn(train, test, cl-label of training data, k = 1, l = 0, prob = FALSE, use.all = TRUE)
 predicted.species <- knn(train[1:4], test[1:4], train$Species, k=1)
 print(predicted.species)
 
@@ -44,7 +44,7 @@ missclasification.rate <- mean(test$Species != predicted.species)
 print(missclasification.rate)
 
 
-#Choosing a K Value
+#             Choosing a K Value
 # Although our data is quite small for us to really get a feel for choosing a good K value, let's practice.
 # 
 # Create a plot of the error (misclassification) rate for k values ranging from 1 to 10.
