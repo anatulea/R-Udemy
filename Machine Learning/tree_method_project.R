@@ -5,7 +5,7 @@
 # Call the ISLR library and check the head of College (a built-in data frame with ISLR, use data() to check this.) Then reassign College to a dataframe called df
 library(ISLR)
 # print(head(College))
-df <-College
+df <- College
 
 # EDA
 # Let's explore the data!
@@ -73,7 +73,6 @@ tree.prediction$Private <- sapply(tree.prediction$Yes, joinCols)
 print(head(tree.prediction))
 
 # Now use table() to create a confusion matrix of your tree model.
-
 confussion.matrix <- table(tree.prediction$Private, test$Private)
 print(confussion.matrix)
 
@@ -83,12 +82,11 @@ prp(ds.tree)
 
 
 
-# Random Forest
+#           Random Forest
 # Now let's build out a random forest model!
 # 
 # Call the randomForest package library
 library(randomForest)
-
 rf.model<- randomForest(Private~., data = train, importance=T)
 
 # What was your model's confusion matrix on its own training set? Use model$confusion.
@@ -97,10 +95,8 @@ print(rf.model$confusion)
 # Grab the feature importance with model$importance. Refer to the reading for more info on what Gini[1] means.[2]
 print(rf.model$importance)
 
-
 # Predictions
 # Now use your random forest model to predict on your test set!
-
 p<- predict(rf.model, test)
 print(table(p, test$Private))
 
