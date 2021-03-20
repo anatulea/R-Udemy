@@ -53,7 +53,6 @@ print(head(clus.data))
 wine.cluster <-kmeans(clus.data[, 1:12], 2)
 print(wine.cluster$centers)
 
-
 # Evaluating the Clusters
 #You usually won't have the luxury of labeled data with KMeans, but let's go ahead and see how we did!
   
