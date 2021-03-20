@@ -70,7 +70,7 @@ test.r <- (test$medv)*(max(data$medv)-min(data$medv))+min(data$medv)
 # Check the Mean Squared Error
 MSE.nn <- sum((test.r - true.predictions)^2)/nrow(test)
 
-print(MSE.nn)
+print(MSE.nn)s
 
 # Visualize Error
 error.df <- data.frame(test.r,true.predictions)
